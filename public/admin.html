@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard – Seblak Gledek</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Bangers&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+  <nav class="admin-nav">
+    <div class="container">
+      <div class="nav-content">
+        <a href="index.html" class="logo">
+          <img src="/images/Seblak Gledek Logo.png" alt="Logo" />
+          <span>Admin Dashboard</span>
+        </a>
+        <div class="nav-actions">
+          <button id="refreshBtn" class="btn btn-primary">
+            <i class="fas fa-sync-alt"></i> Refresh Data
+          </button>
+          <a href="index.html" class="btn btn-outline">
+            <i class="fas fa-external-link-alt"></i> Ke Website
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="admin-main">
+    <div class="container">
+      <div class="dashboard-header">
+        <h1>Reservasi Pelanggan</h1>
+        <p>Kelola semua reservasi meja Seblak Gledek di sini.</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+          <div class="stat-info">
+            <span class="stat-label">Total Reservasi</span>
+            <span class="stat-value" id="totalReservations">0</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-users"></i></div>
+          <div class="stat-info">
+            <span class="stat-label">Total Tamu</span>
+            <span class="stat-value" id="totalGuests">0</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-clock"></i></div>
+          <div class="stat-info">
+            <span class="stat-label">Hari Ini</span>
+            <span class="stat-value" id="todayReservations">0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="data-card">
+        <div class="table-responsive">
+          <table id="reservationsTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nama</th>
+                <th>Phone</th>
+                <th>Tanggal</th>
+                <th>Jam</th>
+                <th>Tamu</th>
+                <th>Catatan</th>
+                <th>Status</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="reservationsBody">
+              <!-- Data will be injected here -->
+              <tr>
+                <td colspan="9" class="text-center">Memuat data...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Toast for notifications -->
+  <div id="toast" class="toast"></div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
