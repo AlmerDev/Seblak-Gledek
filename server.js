@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Serve images from Image directory
-app.use('/images', express.static(path.join(__dirname, 'Image')));
+app.use('images', express.static(path.join(__dirname, 'Image')));
 
 // In-memory storage for reservations/orders
 let reservations = [];
@@ -33,7 +33,7 @@ app.get('/api/menu', (req, res) => {
       name: 'Seblak Basah',
       description: 'Seblak kuah pedas gurih dengan pilihan topping melimpah. Kerupuk kenyal, bakso, ceker, dan sayuran segar.',
       price: 15000,
-      image: '/images/Menu 1.png',
+      image: 'images/Menu 1.png',
       category: 'Seblak Basah',
       spicyLevel: 3
     },
@@ -42,7 +42,7 @@ app.get('/api/menu', (req, res) => {
       name: 'Seblak Kuah Spesial',
       description: 'Seblak kuah merah pedas dengan topping premium. Udang, cumi, siomay, dan makaroni dalam kuah rempah khas.',
       price: 20000,
-      image: '/images/Menu 2.png',
+      image: 'images/Menu 2.png',
       category: 'Seblak Spesial',
       spicyLevel: 4
     },
@@ -51,7 +51,7 @@ app.get('/api/menu', (req, res) => {
       name: 'Seblak Goreng Krispy',
       description: 'Seblak goreng renyah dengan bumbu pedas kering. Topping crispy, sayuran, dan perasan jeruk nipis segar.',
       price: 18000,
-      image: '/images/Menu 3.png',
+      image: 'images/Menu 3.png',
       category: 'Seblak Goreng',
       spicyLevel: 3
     }
@@ -151,17 +151,17 @@ app.patch('/api/reservation/:id', (req, res) => {
   const { id } = req.params;
   const { status } = req.body;
   console.log(`PATCH /api/reservation/${id} with status: ${status}`);
-  
+
   const reservation = reservations.find(r => r.id === parseInt(id));
   if (!reservation) {
     console.log(`Reservation ID ${id} not found`);
     return res.status(404).json({ success: false, message: 'Reservasi tidak ditemukan' });
   }
-  
+
   if (status) {
     reservation.status = status;
   }
-  
+
   console.log(`Status updated for ID ${id}`);
   res.json({ success: true, message: 'Status berhasil diperbarui', data: reservation });
 });
@@ -170,15 +170,15 @@ app.patch('/api/reservation/:id', (req, res) => {
 app.delete('/api/reservation/:id', (req, res) => {
   const { id } = req.params;
   console.log(`DELETE /api/reservation/${id}`);
-  
+
   const initialLength = reservations.length;
   reservations = reservations.filter(r => r.id !== parseInt(id));
-  
+
   if (reservations.length === initialLength) {
     console.log(`Reservation ID ${id} not found for deletion`);
     return res.status(404).json({ success: false, message: 'Reservasi tidak ditemukan' });
   }
-  
+
   console.log(`Reservation ID ${id} deleted`);
   res.json({ success: true, message: 'Reservasi berhasil dihapus' });
 });
