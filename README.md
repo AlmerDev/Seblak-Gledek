@@ -1,6 +1,6 @@
 <img src="images/Readme/SeblakGledekLogo.png" width="500">
 
-<strong>Seblak Gledek Website</strong>
+<h1 align="center"><b>🔥 SEBLAK GLEDEK WEBSITE 🔥</b></h1>
 
 Website Seblak Gledek adalah website sederhana untuk promosi dan penjualan seblak dengan konsep topping bebas. Website ini dibuat untuk menampilkan menu, menarik pelanggan, serta menyediakan sistem pemesanan online.
 
