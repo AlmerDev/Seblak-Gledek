@@ -14,8 +14,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Serve static files from public directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Serve images from Image directory
-app.use('images', express.static(path.join(__dirname, 'Image')));
+// Serve images from images directory
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 // In-memory storage for reservations/orders
 let reservations = [];
@@ -33,7 +33,7 @@ app.get('/api/menu', (req, res) => {
       name: 'Seblak Basah',
       description: 'Seblak kuah pedas gurih dengan pilihan topping melimpah. Kerupuk kenyal, bakso, ceker, dan sayuran segar.',
       price: 15000,
-      image: 'images/Menu 1.png',
+      image: '/images/Menu 1.png',
       category: 'Seblak Basah',
       spicyLevel: 3
     },
@@ -42,7 +42,7 @@ app.get('/api/menu', (req, res) => {
       name: 'Seblak Kuah Spesial',
       description: 'Seblak kuah merah pedas dengan topping premium. Udang, cumi, siomay, dan makaroni dalam kuah rempah khas.',
       price: 20000,
-      image: 'images/Menu 2.png',
+      image: '/images/Menu 2.png',
       category: 'Seblak Spesial',
       spicyLevel: 4
     },
@@ -51,7 +51,7 @@ app.get('/api/menu', (req, res) => {
       name: 'Seblak Goreng Krispy',
       description: 'Seblak goreng renyah dengan bumbu pedas kering. Topping crispy, sayuran, dan perasan jeruk nipis segar.',
       price: 18000,
-      image: 'images/Menu 3.png',
+      image: '/images/Menu 3.png',
       category: 'Seblak Goreng',
       spicyLevel: 3
     }
