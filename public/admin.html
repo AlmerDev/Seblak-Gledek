@@ -43,57 +43,114 @@
   <main class="admin-main">
     <div class="container">
       <div class="dashboard-header">
-        <h1>Reservasi Pelanggan</h1>
-        <p>Kelola semua reservasi meja Seblak Gledek di sini.</p>
+        <h1>Admin Dashboard</h1>
+        <p>Kelola reservasi dan pesanan online Seblak Gledek.</p>
       </div>
 
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
-          <div class="stat-info">
-            <span class="stat-label">Total Reservasi</span>
-            <span class="stat-value" id="totalReservations">0</span>
+      <div class="admin-tabs">
+        <button class="tab-btn active" data-tab="reservations">
+          <i class="fas fa-calendar-alt"></i> Reservasi Meja
+        </button>
+        <button class="tab-btn" data-tab="orders">
+          <i class="fas fa-shopping-cart"></i> Pesanan Online
+        </button>
+      </div>
+
+      <div id="reservationsSection" class="tab-content active">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+            <div class="stat-info">
+              <span class="stat-label">Total Reservasi</span>
+              <span class="stat-value" id="totalReservations">0</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-users"></i></div>
+            <div class="stat-info">
+              <span class="stat-label">Total Tamu</span>
+              <span class="stat-value" id="totalGuests">0</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-clock"></i></div>
+            <div class="stat-info">
+              <span class="stat-label">Hari Ini</span>
+              <span class="stat-value" id="todayReservations">0</span>
+            </div>
           </div>
         </div>
-        <div class="stat-card">
-          <div class="stat-icon"><i class="fas fa-users"></i></div>
-          <div class="stat-info">
-            <span class="stat-label">Total Tamu</span>
-            <span class="stat-value" id="totalGuests">0</span>
-          </div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon"><i class="fas fa-clock"></i></div>
-          <div class="stat-info">
-            <span class="stat-label">Hari Ini</span>
-            <span class="stat-value" id="todayReservations">0</span>
+
+        <div class="data-card">
+          <div class="table-responsive">
+            <table id="reservationsTable">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nama</th>
+                  <th>Phone</th>
+                  <th>Tanggal</th>
+                  <th>Jam</th>
+                  <th>Tamu</th>
+                  <th>Catatan</th>
+                  <th>Status</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="reservationsBody">
+                <tr><td colspan="9" class="text-center">Memuat data...</td></tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
 
-      <div class="data-card">
-        <div class="table-responsive">
-          <table id="reservationsTable">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Nama</th>
-                <th>Phone</th>
-                <th>Tanggal</th>
-                <th>Jam</th>
-                <th>Tamu</th>
-                <th>Catatan</th>
-                <th>Status</th>
-                <th>Aksi</th>
-              </tr>
-            </thead>
-            <tbody id="reservationsBody">
-              <!-- Data will be injected here -->
-              <tr>
-                <td colspan="9" class="text-center">Memuat data...</td>
-              </tr>
-            </tbody>
-          </table>
+      <div id="ordersSection" class="tab-content">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-box"></i></div>
+            <div class="stat-info">
+              <span class="stat-label">Total Pesanan</span>
+              <span class="stat-value" id="totalOrders">0</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-money-bill-wave"></i></div>
+            <div class="stat-info">
+              <span class="stat-label">Pendapatan</span>
+              <span class="stat-value" id="totalRevenue">Rp 0</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-spinner"></i></div>
+            <div class="stat-info">
+              <span class="stat-label">Sedang Diproses</span>
+              <span class="stat-value" id="pendingOrders">0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="data-card">
+          <div class="table-responsive">
+            <table id="ordersTable">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Pelanggan</th>
+                  <th>Pesanan</th>
+                  <th>Toppings</th>
+                  <th>Level</th>
+                  <th>Total</th>
+                  <th>Bayar</th>
+                  <th>Status</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="ordersBody">
+                <tr><td colspan="9" class="text-center">Memuat data pesanan...</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

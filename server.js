@@ -21,6 +21,8 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 let reservations = [];
 let nextReservationId = 1;
 let messages = [];
+let orders = [];
+let nextOrderId = 1;
 
 // API Routes
 
@@ -141,6 +143,87 @@ app.post('/api/contact', (req, res) => {
   });
 });
 
+// ORDERS API
+
+// GET all orders (admin)
+app.get('/api/orders', (req, res) => {
+  res.json({ success: true, data: orders });
+});
+
+// POST new order
+app.post('/api/orders', (req, res) => {
+  const { 
+    customerName, 
+    customerPhone, 
+    seblakType, 
+    toppings, 
+    spicyLevel, 
+    paymentMethod, 
+    totalPrice,
+    notes 
+  } = req.body;
+
+  if (!customerName || !customerPhone || !seblakType || !totalPrice) {
+    return res.status(400).json({
+      success: false,
+      message: 'Data pesanan tidak lengkap!'
+    });
+  }
+
+  const order = {
+    id: nextOrderId++,
+    customerName,
+    customerPhone,
+    seblakType,
+    toppings: toppings || [],
+    spicyLevel: spicyLevel || 1,
+    paymentMethod,
+    totalPrice: parseInt(totalPrice),
+    notes: notes || '',
+    status: 'pending',
+    createdAt: new Date().toISOString()
+  };
+
+  orders.push(order);
+  console.log('New order received:', order);
+
+  res.json({
+    success: true,
+    message: 'Pesanan berhasil dibuat!',
+    data: order
+  });
+});
+
+// PATCH update order status
+app.patch('/api/orders/:id', (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body;
+
+  const order = orders.find(o => o.id === parseInt(id));
+  if (!order) {
+    return res.status(404).json({ success: false, message: 'Pesanan tidak ditemukan' });
+  }
+
+  if (status) {
+    order.status = status;
+  }
+
+  res.json({ success: true, message: 'Status pesanan diperbarui', data: order });
+});
+
+// DELETE order
+app.delete('/api/orders/:id', (req, res) => {
+  const { id } = req.params;
+  const initialLength = orders.length;
+  orders = orders.filter(o => o.id !== parseInt(id));
+
+  if (orders.length === initialLength) {
+    return res.status(404).json({ success: false, message: 'Pesanan tidak ditemukan' });
+  }
+
+  res.json({ success: true, message: 'Pesanan berhasil dihapus' });
+});
+
 // GET reservations (admin)
 app.get('/api/reservations', (req, res) => {
   res.json({ success: true, data: reservations });
@@ -191,4 +274,13 @@ app.get('*', (req, res) => {
 app.listen(PORT, () => {
   console.log(`🔥 Seblak Gledek Server berjalan di http://localhost:${PORT}`);
   console.log(`📍 Buka browser dan akses http://localhost:${PORT}`);
+});
+
+// Global Error Handling to keep server running
+process.on('uncaughtException', (err) => {
+  console.error('❌ Uncaught Exception:', err);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('❌ Unhandled Rejection at:', promise, 'reason:', reason);
 });

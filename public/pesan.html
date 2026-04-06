@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pemesanan Seblak Gledek – Pilih Topping Suka-suka</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Bangers&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pesan.css">
+</head>
+<body>
+    <nav class="navbar static">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="/images/Seblak Gledek Logo.png" alt="Seblak Gledek Logo">
+            </a>
+            <a href="index.html" class="btn btn-outline"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
+        </div>
+    </nav>
+
+    <main class="order-container">
+        <header class="order-header">
+            <div class="section-tag">Custom Pesanan</div>
+            <h1 class="section-title">Buat Seblak <span class="text-gradient">Impianmu!</span></h1>
+            <p class="section-subtitle">Pilih jenis, topping, dan level pedas sesukamu. Kami masak fresh untukmu!</p>
+        </header>
+
+        <form id="orderForm" class="order-grid">
+            <!-- Left Side: Customization -->
+            <div class="order-customization">
+                <!-- Step 1: Seblak Type -->
+                <section class="order-section" id="step-type">
+                    <div class="section-number">01</div>
+                    <h2 class="order-section-title">Pilih Jenis Seblak</h2>
+                    <div class="type-grid" id="seblakTypeGrid">
+                        <!-- Loaded via JS -->
+                        <div class="loading-placeholder">Memuat jenis seblak...</div>
+                    </div>
+                </section>
+
+                <!-- Step 2: Toppings -->
+                <section class="order-section" id="step-toppings">
+                    <div class="section-number">02</div>
+                    <h2 class="order-section-title">Pilih Topping (Bisa Lebih dari Satu)</h2>
+                    <div class="toppings-selection-grid" id="toppingsSelectionGrid">
+                        <!-- Loaded via JS -->
+                        <div class="loading-placeholder">Memuat topping...</div>
+                    </div>
+                </section>
+
+                <!-- Step 3: Spicy Level -->
+                <section class="order-section" id="step-spicy">
+                    <div class="section-number">03</div>
+                    <h2 class="order-section-title">Pilih Level Pedas</h2>
+                    <div class="spicy-level-container">
+                        <div class="spicy-slider-wrapper">
+                            <input type="range" id="spicyLevel" name="spicyLevel" min="1" max="5" value="1" class="spicy-slider">
+                            <div class="spicy-labels">
+                                <span data-level="1">Lvl 1 (Biasa)</span>
+                                <span data-level="2">Lvl 2 (Sedang)</span>
+                                <span data-level="3">Lvl 3 (Pedas)</span>
+                                <span data-level="4">Lvl 4 (Gledek)</span>
+                                <span data-level="5">Lvl 5 (Nyerah!)</span>
+                            </div>
+                        </div>
+                        <div class="spicy-indicator" id="spicyIndicator">
+                            <i class="fas fa-fire"></i> Level 1: Biasa
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Step 4: Customer Info -->
+                <section class="order-section" id="step-info">
+                    <div class="section-number">04</div>
+                    <h2 class="order-section-title">Data Pengiriman & Pembayaran</h2>
+                    <div class="order-form-fields">
+                        <div class="form-group">
+                            <label for="custName"><i class="fas fa-user"></i> Nama Lengkap</label>
+                            <input type="text" id="custName" name="customerName" placeholder="Masukkan nama Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="custPhone"><i class="fas fa-phone"></i> Nomor WhatsApp</label>
+                            <input type="tel" id="custPhone" name="customerPhone" placeholder="08xxxxxxxxxx" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="paymentMethod"><i class="fas fa-credit-card"></i> Metode Pembayaran</label>
+                            <select id="paymentMethod" name="paymentMethod" required>
+                                <option value="">Pilih Metode Pembayaran</option>
+                                <option value="Transfer Bank">Transfer Bank (BCA/Mandiri)</option>
+                                <option value="E-Wallet">E-Wallet (Gopay/OVO/Dana)</option>
+                                <option value="COD">Bayar di Tempat (COD)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="orderNotes"><i class="fas fa-sticky-note"></i> Catatan (Opsional)</label>
+                            <textarea id="orderNotes" name="notes" rows="2" placeholder="Contoh: Kerupuk gak usah banyak-banyak."></textarea>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Side: Order Summary (Sticky) -->
+            <aside class="order-summary-sidebar">
+                <div class="summary-card">
+                    <h3 class="summary-title">Ringkasan Pesanan</h3>
+                    <div class="summary-content">
+                        <div class="summary-item" id="summary-type">
+                            <span class="label">Jenis Seblak:</span>
+                            <span class="value">-</span>
+                        </div>
+                        <div class="summary-item" id="summary-toppings">
+                            <span class="label">Toppings:</span>
+                            <div class="toppings-list-summary">Belum ada</div>
+                        </div>
+                        <div class="summary-item" id="summary-spicy">
+                            <span class="label">Level Pedas:</span>
+                            <span class="value">Level 1</span>
+                        </div>
+                        <hr class="summary-divider">
+                        <div class="summary-total">
+                            <span>Total Harga:</span>
+                            <span id="totalPriceDisplay">Rp 0</span>
+                        </div>
+                    </div>
+                    <div class="summary-actions">
+                        <button type="submit" class="btn btn-primary btn-full" id="submitOrderBtn">
+                            <i class="fas fa-shopping-cart"></i> Pesan Sekarang
+                        </button>
+                        <button type="button" class="btn btn-whatsapp btn-full" id="whatsappOrderBtn">
+                            <i class="fab fa-whatsapp"></i> Pesan via WhatsApp
+                        </button>
+                    </div>
+                    <p class="summary-note">* Pesan via WhatsApp akan otomatis mengirim detail pesanan Anda ke admin kami.</p>
+                </div>
+            </aside>
+        </form>
+    </main>
+
+    <footer class="footer-simple">
+        <p>&copy; 2025 Seblak Gledek. Semua hak dilindungi. 🔥</p>
+    </footer>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="pesan.js"></script>
+</body>
+</html>
