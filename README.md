@@ -1,4 +1,4 @@
-<img src="images/Readme/SeblakGledekLogo.png" width="300">
+<img src="images/Readme/SeblakGledekLogo.png" width="400">
 
 ## Seblak Gledek Website
 
