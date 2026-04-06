@@ -1,4 +1,4 @@
-<img src="images/Readme/SeblakGledekLogo.png" width="500">
+<img src="images/Readme/SeblakGledekLogo.png" width="500" align="center">
 
 <h1 align="center"><b>🔥 SEBLAK GLEDEK WEBSITE 🔥</b></h1>
 
