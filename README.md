@@ -8,7 +8,7 @@ Website Seblak Gledek adalah website sederhana untuk promosi dan penjualan sebla
 ## Preview Website
 
 <p align="center">
-  <img src="images/Readme/PreviewWebsiteLandscape.png"/>
+  <img src="images/Readme/PreviewWebsiteLandscape.png" width="700" />
   <img src="images/Readme/PreviewWebsitePotrait.png" width="500" />
 </p>
 ## Fitur
