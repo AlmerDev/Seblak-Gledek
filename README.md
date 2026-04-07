@@ -49,7 +49,7 @@ Akses halaman admin:
   * admin.html
   * css/
   * js/
-  * images/
+* images/
 * server.js
 
 ## Cara Menjalankan
@@ -77,4 +77,5 @@ Project ini dibuat untuk membantu usaha kecil seperti Seblak Gledek agar dapat m
 ## Author
 
 Daffa Almerzaky Ariyuda
+
 Indonesia
