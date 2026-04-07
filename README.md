@@ -1,4 +1,4 @@
-<p align="center">
+<img width="896" height="1200" alt="Gemini_Generated_Image_gmkcigmkcigmkcig" src="https://github.com/user-attachments/assets/41e5e179-8ce1-418b-b236-c3febb908c7b" /><p align="center">
  <img src="images/Readme/SeblakGledekLogo.png" width="500">
 </p>
 <h1 align="center"><b>🔥 SEBLAK GLEDEK WEBSITE 🔥</b></h1>
@@ -7,7 +7,12 @@ Website Seblak Gledek adalah website sederhana untuk promosi dan penjualan sebla
 
 ## Preview Website
 
-![Preview](images/Readme/tampilanSeblak.png)
+<table>
+  <tr>
+    <td><img src="images/Readme/PreviewWebsiteLandscape.png" width="300"/></td>
+    <td><img src="images/Readme/PreviewWebsitePotrait.png" width="500"/></td>
+  </tr>
+</table>
 
 ## Fitur
 
